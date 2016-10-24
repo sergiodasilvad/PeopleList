@@ -6,7 +6,6 @@
 package ch.hearc.ig.odi.peoplelist.presentation.bean;
 
 import ch.hearc.ig.odi.peoplelist.services.Services;
-import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -23,6 +22,11 @@ public class PeopleListBean {
     @Inject
     Services services;
 
+    public PeopleListBean() {
+    }
+
+    
+    
     public List getPeopleList() {
         return services.getPeopleList();
     }
