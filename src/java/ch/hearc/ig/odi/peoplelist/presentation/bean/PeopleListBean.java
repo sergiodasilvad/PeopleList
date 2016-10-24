@@ -85,7 +85,13 @@ public class PeopleListBean {
         return services.getPeopleList();
     }
 
-    public Long insertPeople(){
-        return services.savePerson(gender, firstName, lastName, married, birthDate);
+    public String insertPeople(){
+        Long codeRetour = services.savePerson(gender, firstName, lastName, married, birthDate);
+        if (codeRetour != 0){
+            return "success";
+        }else{
+            return "error";
+        }
+        
     }
 }
