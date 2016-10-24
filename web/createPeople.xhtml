@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h2>#{msg['people.create.form.title']}</h2>
+            #{msg['people.id']} : <h:inputText id="id"
+                           title="id"
+                           required="true"
+                           requiredMessage="#{msg['people.create.error.id.required']}"
+                           maxlength="25"
+                           value="${peopleListBean.id}"/>
+            <p></p>
+            #{msg['people.firstName']} : <h:inputText id="firstName"
+                           title="name"
+                           required="true"
+                           requiredMessage="#{msg['people.create.error.firstName.required']}"
+                           maxlength="100" 
+                           value="${peopleListBean.firstName}"/>
+            <p></p>
+            #{msg['people.lastName']} : <h:inputText id="lastName"
+                           title="Producer"
+                           required="true"
+                           requiredMessage="#{msg['people.create.error.lastName.required']}"
+                           maxlength="100"
+                           value="${peopleListBean.lastName}"/>
+            <p></p>
+
+            <h:commandButton id="reset" value="#{msg['button.label.reset']}" type="reset" />
+
+            <h:commandButton id="submit" value="#{msg['button.label.submit']}" 
+                             action="${peopleListBean.insertPeople()}" />
+
+        </h:form>
+
+        <h:form>
+            <h:commandButton id="cancel" value="#{msg['button.label.cancel']}" action="index" />
+        </h:form>
+    </h:body>
+</html>
+
