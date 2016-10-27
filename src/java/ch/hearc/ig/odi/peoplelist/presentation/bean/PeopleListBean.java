@@ -86,12 +86,7 @@ public class PeopleListBean {
     }
 
     public String insertPeople(){
-        Long codeRetour = services.savePerson(gender, firstName, lastName, married, birthDate);
-        if (codeRetour != 0){
-            return "success";
-        }else{
-            return "error";
-        }
-        
+        services.savePerson(gender, firstName, lastName, married, birthDate);
+        return "success";
     }
 }
