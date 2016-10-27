@@ -124,6 +124,9 @@ public class Services implements Serializable{
         
         return currentMaxId;
     }
+    public void removePerson(Person person){    
+        people.remove(person.getId(),person);
+    }
     
     public Person getPerson(Long id){
         return people.get(id);

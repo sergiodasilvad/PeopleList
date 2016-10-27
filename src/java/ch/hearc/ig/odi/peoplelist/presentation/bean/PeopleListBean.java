@@ -5,6 +5,7 @@
  */
 package ch.hearc.ig.odi.peoplelist.presentation.bean;
 
+import ch.hearc.ig.odi.peoplelist.business.Person;
 import ch.hearc.ig.odi.peoplelist.services.Services;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +24,7 @@ public class PeopleListBean {
     @Inject
     Services services;
 
+    private Person personToDelete;
     private Long id;
     private String gender;
     private String firstName;
@@ -31,6 +33,14 @@ public class PeopleListBean {
     private Date birthDate;
     
     public PeopleListBean() {
+    }
+
+    public Person getPersonToDelete() {
+        return personToDelete;
+    }
+
+    public void setPersonToDelete(Person personToDelete) {
+        this.personToDelete = personToDelete;
     }
 
     public Long getId() {
@@ -87,6 +97,10 @@ public class PeopleListBean {
 
     public String insertPeople(){
         services.savePerson(gender, firstName, lastName, married, birthDate);
+        return "success";
+    }
+    public String removePeople(){
+        services.removePerson(personToDelete);
         return "success";
     }
 }
