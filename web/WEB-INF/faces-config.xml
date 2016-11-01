@@ -21,6 +21,8 @@
             <from-action>#{peopleListBean.insertPeople}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/createPeople.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -38,7 +40,7 @@
         <from-view-id>/peopleLOV.xhtml</from-view-id>
         <navigation-case>
             <from-action>#{peopleListBean.removePeople}</from-action>
-            <from-outcome>succes</from-outcome>
+            <from-outcome>success</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>        
     </navigation-rule>

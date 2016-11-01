@@ -10,6 +10,8 @@ import ch.hearc.ig.odi.peoplelist.services.Services;
 import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -31,7 +33,7 @@ public class PeopleListBean {
     private String lastName;
     private Boolean married;
     private Date birthDate;
-    
+
     public PeopleListBean() {
     }
 
@@ -90,16 +92,22 @@ public class PeopleListBean {
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
-    
+
     public List getPeopleList() {
         return services.getPeopleList();
     }
 
-    public String insertPeople(){
-        services.savePerson(gender, firstName, lastName, married, birthDate);
-        return "success";
+    public String insertPeople() throws Exception {
+        if (services.savePerson(gender, firstName, lastName, married, birthDate) == 0L) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erreur d'insertion, la personne existe déjà", "La personne existe déjà"));
+            return "error";
+        } else {
+            return "success";
+        }
+
     }
-    public String removePeople(){
+
+    public String removePeople() {
         services.removePerson(personToDelete);
         return "success";
     }
